@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddonShellProject", "AddonShellProject\AddonShellProject.csproj", "{44387377-FCA2-495F-89D1-B7965E67142F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddonShellProject", "AddonShellProject.csproj", "{44387377-FCA2-495F-89D1-B7965E67142F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

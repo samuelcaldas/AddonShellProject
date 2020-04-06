@@ -88,6 +88,8 @@ namespace NinjaTrader.NinjaScript.AddOns
 		private void marketDataButton_Click(object sender, RoutedEventArgs e)
 		{
 			outputBox.Text = "Market Data Subscription Button";
+			NinjaTrader.Code.Output.Process("Market Data Subscription Button", PrintTo.OutputTab1);
+			NinjaTrader.NinjaScript.NinjaScript.Log("Market Data Subscription Button", LogLevel.Information);
 		}
 	}
 }

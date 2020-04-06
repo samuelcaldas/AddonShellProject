@@ -82,7 +82,6 @@ namespace NinjaTrader.NinjaScript.AddOns
 		#endregion
 		private void acctValuesButton_Click(object sender, RoutedEventArgs e)
 		{
-			NinjaTrader.Code.Output.Process("Button clicked", PrintTo.OutputTab1);
 		}
 
 		private void marketDataButton_Click(object sender, RoutedEventArgs e)

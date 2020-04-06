@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{44387377-FCA2-495F-89D1-B7965E67142F}</ProjectGuid>
+    <ProjectGuid>{85E715A7-388F-4D1C-81D1-7E0EB48B8B75}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AddonShellProject</RootNamespace>
@@ -100,6 +100,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\NinjaEnviremomentProject\NinjaEnviremomentProject\NinjaEnviremomentProject.csproj">
+      <Project>{770c8821-e908-4cc6-8c0c-b63d2246ccb5}</Project>
+      <Name>NinjaEnviremomentProject</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

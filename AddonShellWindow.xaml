@@ -72,18 +72,13 @@
                     </t:InstrumentSelector.Margin>
                 </t:InstrumentSelector>
                 <!-- Market Data -->
-                <Button x:Name="marketDataButton"		Grid.Row="5"	Grid.Column="1" Content="Market Data Subscription" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Click="marketDataButton_Click" >
+                <Button x:Name="marketDataButton"		Grid.Row="5"	Grid.Column="1" Content="Market Data Subscription" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Click="marketDataButton_Click" Height="50" VerticalAlignment="Top" >
                     <Button.Margin>
                         <Thickness Left="{StaticResource MarginButtonLeft}" Top="{StaticResource MarginBase}" Right="0" Bottom="0" />
                     </Button.Margin>
                 </Button>
                 <!-- Market Depth -->
-                <Button x:Name="marketDepthAskButton"		Grid.Row="6"	Grid.Column="0" Content="Ask Depth"  d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
-                    <Button.Margin>
-                        <Thickness Left="{StaticResource MarginButtonLeft}" Top="{StaticResource MarginBase}" Right="0" Bottom="0" />
-                    </Button.Margin>
-                </Button>
-                <Button x:Name="marketDepthBidButton" Grid.Row="6"	Grid.Column="1" Content="Bid Depth" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+                <Button x:Name="marketDepthButton" Grid.Row="6"	Grid.Column="1" Content="Market Depth" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Click="marketDepthButton_Click">
                     <Button.Margin>
                         <Thickness Left="{StaticResource MarginButtonLeft}" Top="{StaticResource MarginBase}" Right="{StaticResource MarginBase}" Bottom="0" />
                     </Button.Margin>
@@ -97,29 +92,29 @@
                     </t:QuantityUpDown.Margin>
                 </t:QuantityUpDown>
                 <!-- Order Events Buttons-->
-                <Button x:Name="onExecutionUpdateButton" Grid.Row="8"	Grid.Column="1" Content="OnExecutionUpdate" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+                <Button x:Name="onExecutionUpdateButton" Grid.Row="8"	Grid.Column="1" Content="OnExecutionUpdate" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" >
                     <Button.Margin>
                         <Thickness Left="{StaticResource MarginBase}" Top="{StaticResource MarginBase}" Right="0" Bottom="0" />
                     </Button.Margin>
                 </Button>
                 <!-- Order Buttons -->
-                <Button x:Name="buyMarketButton"		Grid.Row="9"	Grid.Column="0" Content="Buy"  d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+                <Button x:Name="buyButton"		Grid.Row="9"	Grid.Column="0" Content="Buy"  d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Click="buyButton_Click">
                     <Button.Margin>
                         <Thickness Left="{StaticResource MarginBase}" Top="{StaticResource MarginBase}" Right="0" Bottom="0" />
                     </Button.Margin>
                 </Button>
-                <Button x:Name="sellMarketButton"		Grid.Row="9"	Grid.Column="1" Content="Sell" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+                <Button x:Name="sellButton"		Grid.Row="9"	Grid.Column="1" Content="Sell" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Click="sellButton_Click">
                     <Button.Margin>
                         <Thickness Left="{StaticResource MarginBase}" Top="{StaticResource MarginBase}" Right="0" Bottom="0" />
                     </Button.Margin>
                 </Button>
 
-                <RadioButton x:Name="RadioButtonMkt" Grid.Column="0" Grid.Row="10" Content="Market" HorizontalAlignment="Left" Margin="{Binding Source={StaticResource MarginBase}}" IsChecked="True" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+                <RadioButton x:Name="RadioButtonMkt" Grid.Column="0" Grid.Row="10" Content="Market" Margin="{Binding Source={StaticResource MarginBase}}" IsChecked="True" d:LayoutOverrides="TopMargin, BottomMargin" HorizontalAlignment="Left" />
                 <RadioButton x:Name="RadioButtonLmt" Grid.Column="0" Grid.Row="11" Content="Limit"  HorizontalAlignment="Left" Margin="{Binding Source={StaticResource MarginBase}}" IsChecked="False"/>
-                <TextBox x:Name="Value" Grid.Row="10" Grid.Column="1" Text="Value" Margin="{Binding Source={StaticResource MarginBase}}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" d:LayoutOverrides="Height" />
+                <TextBox x:Name="Value" Grid.Row="10" Grid.Column="1" Text="0" Margin="{Binding Source={StaticResource MarginBase}}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" d:LayoutOverrides="Height" />
 
 
-                <CheckBox x:Name="ExampleCheckBox" Grid.Column="0" Grid.Row="12" Content="Close order"  d:LayoutOverrides="Height, LeftMargin, RightMargin, TopMargin, BottomMargin"/>
+                <CheckBox x:Name="ExampleCheckBox" Grid.Column="0" Grid.Row="12" Content="Close order"  d:LayoutOverrides="Height, LeftMargin, RightMargin, TopMargin, BottomMargin" HorizontalAlignment="Right" Width="81"/>
 
             </Grid>
         </ScrollViewer>

@@ -39,13 +39,24 @@ namespace NinjaTrader.NinjaScript.AddOns
 	public partial class AddonShellWindow : NTTabPage
 	{
 		#region Variables
-
+		private Order entryOrder;
+		private OrderType orderType;
 		#endregion
 		#region construtor da classe
 		public AddonShellWindow() 
 		{
 			// the content of the page will go here.
 			InitializeComponent();
+			RadioButtonMkt.Checked += (o, args) =>
+			{
+				outputBox.Text = "Market";
+				orderType = OrderType.Market;
+			};
+			RadioButtonLmt.Checked += (o, args) =>
+			{
+				outputBox.Text = "Limit";
+				orderType = OrderType.Limit;
+			};
 		}
         #endregion
 		#region outros
@@ -89,6 +100,106 @@ namespace NinjaTrader.NinjaScript.AddOns
 			outputBox.Text = "Market Data Subscription Button";
 			NinjaTrader.Code.Output.Process("Market Data Subscription Button", PrintTo.OutputTab1);
 			NinjaTrader.NinjaScript.NinjaScript.Log("Market Data Subscription Button", LogLevel.Information);
+		}
+
+		private void buyButton_Click(object sender, RoutedEventArgs e)
+		{
+			entryOrder = accountSelector.SelectedAccount.CreateOrder(
+					instrumentSelector.Instrument,// Order instrument
+
+					OrderAction.Buy,           // Possible values: 
+											   //  OrderAction.Buy
+											   //  OrderAction.BuyToCover
+											   //  OrderAction.Sell
+											   //  OrderAction.SellShort
+
+					orderType,          // Possible values:
+										//  OrderType.Limit
+										//  OrderType.Market
+										//  OrderType.MIT
+										//  OrderType.StopMarket
+										//  OrderType.StopLimit
+
+					OrderEntry.Automated,       // Possible values:
+												//  OrderEntry.Automated
+												//  OrderEntry.Manual
+												// Allows setting the tag for orders submitted manually or via automated trading logic
+
+					TimeInForce.Day,            // Possible values:
+												//  TimeInForce.Day
+												//  TimeInForce.Gtc
+												//  TimeInForce.Gtd
+												//  TimeInForce.Ioc
+												//  TimeInForce.Opg
+
+					qudSelector.Value,                          // Order quantity
+
+					0,                          // Order limit price. Use "0" should this parameter be irrelevant for the OrderType being submitted.
+
+					Convert.ToDouble(Value.Text),// Order stop price.Use "0" should this parameter be irrelevant for the OrderType being submitted.
+
+				   string.Empty,                     // A string representing the OCO ID used to link OCO orders together
+
+				   string.Empty,                // A string representing the name of the order. Max 50 characters.
+
+					NinjaTrader.Core.Globals.MaxDate,// A DateTime value to be used with TimeInForce.Gtd - for all other cases you can pass in Core.Globals.MaxDate
+
+					null                        // Custom order if it is being used
+            );
+			accountSelector.SelectedAccount.Submit(new[] { entryOrder });
+		}
+
+		private void sellButton_Click(object sender, RoutedEventArgs e)
+		{
+			entryOrder = accountSelector.SelectedAccount.CreateOrder(
+					instrumentSelector.Instrument,// Order instrument
+
+					OrderAction.Sell,           // Possible values: 
+												//  OrderAction.Buy
+												//  OrderAction.BuyToCover
+												//  OrderAction.Sell
+												//  OrderAction.SellShort
+
+					orderType,           // Possible values:
+												//  OrderType.Limit
+												//  OrderType.Market
+												//  OrderType.MIT
+												//  OrderType.StopMarket
+												//  OrderType.StopLimit
+
+					OrderEntry.Automated,       // Possible values:
+												//  OrderEntry.Automated
+												//  OrderEntry.Manual
+												// Allows setting the tag for orders submitted manually or via automated trading logic
+
+					TimeInForce.Day,            // Possible values:
+												//  TimeInForce.Day
+												//  TimeInForce.Gtc
+												//  TimeInForce.Gtd
+												//  TimeInForce.Ioc
+												//  TimeInForce.Opg
+
+					qudSelector.Value,                          // Order quantity
+
+					0,                          // Order limit price. Use "0" should this parameter be irrelevant for the OrderType being submitted.
+
+					Convert.ToDouble(Value.Text),// Order stop price.Use "0" should this parameter be irrelevant for the OrderType being submitted.
+
+				   string.Empty,                     // A string representing the OCO ID used to link OCO orders together
+
+				   string.Empty,                // A string representing the name of the order. Max 50 characters.
+
+					NinjaTrader.Core.Globals.MaxDate,// A DateTime value to be used with TimeInForce.Gtd - for all other cases you can pass in Core.Globals.MaxDate
+
+					null                        // Custom order if it is being used
+			);
+			accountSelector.SelectedAccount.Submit(new[] { entryOrder });
+
+		}
+
+		private void marketDepthButton_Click(object sender, RoutedEventArgs e)
+		{
+			
 		}
 	}
 }

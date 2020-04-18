@@ -29,20 +29,20 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label x:Name="Actionslabel" Content="Actions"/>
+            <Label x:Name="Actionslabel" Content="Actions" Foreground="White"/>
             <Button x:Name="start" Content="Start" Margin="3" Click="action_Click" Grid.Row="1"/>
             <Button x:Name="stop" Content="Stop" Margin="3" Click="action_Click" Grid.Column="1" Grid.Row="1"/>
             <Button x:Name="clearconsole" Content="Clear Console" Margin="3" Click="action_Click" Grid.Column="2" Grid.Row="1"/>
-            <Label x:Name="Marketlabel" Content="Market" Grid.Row="2"/>
+            <Label x:Name="Marketlabel" Content="Market" Grid.Row="2" Foreground="White"/>
             <Button x:Name="buy" Content="Buy" Margin="3" Grid.Row="3" Click="order_Click"/>
             <Button x:Name="sell" Content="Sell" Margin="3" Grid.Column="1" Grid.Row="3" Click="order_Click"/>
             <Button x:Name="close" Content="Close" Margin="2" Grid.Column="2" Grid.Row="3" Click="order_Click"/>
             <RadioButton x:Name="bid" Content="Bid" Margin="3" Grid.Row="4" Checked="radioButton_Checked"/>
             <RadioButton x:Name="ask" Content="Ask" Margin="3" Grid.Row="4" Grid.Column="1" Checked="radioButton_Checked"/>
             <RadioButton x:Name="mkt" Content="Market" Margin="3" Grid.Row="4"  Grid.Column="2" Checked="radioButton_Checked" IsChecked="True"/>
-            <Label x:Name="Accountlabel" Content="Account"  Grid.Row="5"/>
+            <Label x:Name="Accountlabel" Content="Account"  Grid.Row="5" Foreground="White"/>
             <t:AccountSelector x:Name="accountSelector" Margin="3" Grid.Row="6"/>
-            <Label x:Name="Instrumentlabel" Content="Instrument"  Grid.Row="5" Grid.Column="1"/>
+            <Label x:Name="Instrumentlabel" Content="Instrument"  Grid.Row="5" Grid.Column="1" Foreground="White"/>
             <t:InstrumentSelector x:Name="instrumentSelector" LastUsedGroup="AddOnFramework" Margin="3" Grid.Row="6" Grid.Column="1" MaxHeight="23"/>
             <t:QuantityUpDown x:Name="qudSelector" Value="1" Margin="3" Grid.Row="6" Grid.Column="2" MaxHeight="23"/>
         </Grid>

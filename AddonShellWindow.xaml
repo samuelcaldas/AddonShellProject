@@ -6,118 +6,47 @@
 		xmlns:AccountData="clr-namespace:NinjaTrader.Gui.AccountData;assembly=NinjaTrader.Gui" 
 		xmlns:AtmStrategy="clr-namespace:NinjaTrader.Gui.NinjaScript.AtmStrategy;assembly=NinjaTrader.Gui"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
-        x:Class="NinjaTrader.NinjaScript.AddOns.AddonShellWindow" >
-    <Grid Background="Transparent">
-        <!-- Define our layout as two columns. Left side will be all of our controls. Right side will be our output box -->
+        x:Class="NinjaTrader.NinjaScript.AddOns.AddonShellWindow"  MinHeight="400" MinWidth="800">
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50*"/>
-            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <!-- Left side controls -->
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <Grid Background="Transparent">
-                <Grid.RowDefinitions>
-                    <!-- ACCOUNT SECTION (0-4)-->
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <!-- DATA SECTION (5-9) -->
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <!-- ORDERS SECTION (10-15) -->
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <!-- MISC SECTION (16-19) -->
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50*"/>
-                    <ColumnDefinition Width="50*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <!-- ACCOUNT SECTION -->
-                <Label Grid.Column="0" Grid.Row="1" Content="Account" VerticalContentAlignment="Center"  Foreground="#CCCCCC" Margin="0,0,27,0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
-                <!-- Request Data Buttons -->
-                <!-- ORDERS SECTION -->
-                <!-- account Selector -->
-                <t:AccountSelector x:Name="accountSelector" Grid.Column="0" Grid.Row="2"  d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
-                    <t:AccountSelector.Margin>
-                        <Thickness Left="{StaticResource MarginBase}" Top="{StaticResource PaddingColumn}" Bottom="0" Right="{StaticResource MarginBase}" />
-                    </t:AccountSelector.Margin>
-                </t:AccountSelector>
-                <!-- Buttons for account values/executions/orders -->
-                <Button x:Name="acctValuesButton"		Grid.Row="2"	Grid.Column="1" Content="Account Values" Click="acctValuesButton_Click" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" >
-                    <Button.Margin>
-                        <Thickness Left="{StaticResource MarginBase}" Top="{StaticResource MarginBase}" Right="0" Bottom="0" />
-                    </Button.Margin>
-                </Button>
-                <!-- DATA SECTION -->
-                <Label Grid.Column="0" Grid.Row="4" Content="Market" VerticalContentAlignment="Center"  Foreground="#CCCCCC" Margin="0,0,34,0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
-                <!-- Instrument Selector -->
-                <t:InstrumentSelector	x:Name="instrumentSelector" Grid.Row="5" Grid.Column="0" LastUsedGroup="AddOnFramework"   d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" >
-                    <t:InstrumentSelector.Margin>
-                        <Thickness Left="{StaticResource MarginBase}" Top="{StaticResource PaddingColumn}" Bottom="0"/>
-                    </t:InstrumentSelector.Margin>
-                </t:InstrumentSelector>
-                <!-- Market Data -->
-                <Button x:Name="marketDataButton"		Grid.Row="5"	Grid.Column="1" Content="Market Data Subscription" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Click="marketDataButton_Click" Height="50" VerticalAlignment="Top" >
-                    <Button.Margin>
-                        <Thickness Left="{StaticResource MarginButtonLeft}" Top="{StaticResource MarginBase}" Right="0" Bottom="0" />
-                    </Button.Margin>
-                </Button>
-                <!-- Market Depth -->
-                <Button x:Name="marketDepthButton" Grid.Row="6"	Grid.Column="1" Content="Market Depth" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Click="marketDepthButton_Click">
-                    <Button.Margin>
-                        <Thickness Left="{StaticResource MarginButtonLeft}" Top="{StaticResource MarginBase}" Right="{StaticResource MarginBase}" Bottom="0" />
-                    </Button.Margin>
-                </Button>
-                <!-- section label -->
-                <Label Grid.Column="0" Grid.Row="7" Content="Orders" VerticalContentAlignment="Center"  Foreground="#CCCCCC" Margin="0,0,35,0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
-                <!-- Quantity/TIF/ATM selectors -->
-                <t:QuantityUpDown x:Name="qudSelector"  Value="1" Grid.Row="8" Grid.Column="0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
-                    <t:QuantityUpDown.Margin>
-                        <Thickness Left="{StaticResource MarginBase}" Top="{StaticResource MarginControl}" Bottom="0" />
-                    </t:QuantityUpDown.Margin>
-                </t:QuantityUpDown>
-                <!-- Order Events Buttons-->
-                <Button x:Name="onExecutionUpdateButton" Grid.Row="8"	Grid.Column="1" Content="OnExecutionUpdate" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" >
-                    <Button.Margin>
-                        <Thickness Left="{StaticResource MarginBase}" Top="{StaticResource MarginBase}" Right="0" Bottom="0" />
-                    </Button.Margin>
-                </Button>
-                <!-- Order Buttons -->
-                <Button x:Name="buyButton"		Grid.Row="9"	Grid.Column="0" Content="Buy"  d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Click="buyButton_Click">
-                    <Button.Margin>
-                        <Thickness Left="{StaticResource MarginBase}" Top="{StaticResource MarginBase}" Right="0" Bottom="0" />
-                    </Button.Margin>
-                </Button>
-                <Button x:Name="sellButton"		Grid.Row="9"	Grid.Column="1" Content="Sell" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Click="sellButton_Click">
-                    <Button.Margin>
-                        <Thickness Left="{StaticResource MarginBase}" Top="{StaticResource MarginBase}" Right="0" Bottom="0" />
-                    </Button.Margin>
-                </Button>
 
-                <RadioButton x:Name="RadioButtonMkt" Grid.Column="0" Grid.Row="10" Content="Market" Margin="{Binding Source={StaticResource MarginBase}}" IsChecked="True" d:LayoutOverrides="TopMargin, BottomMargin" HorizontalAlignment="Left" />
-                <RadioButton x:Name="RadioButtonLmt" Grid.Column="0" Grid.Row="11" Content="Limit"  HorizontalAlignment="Left" Margin="{Binding Source={StaticResource MarginBase}}" IsChecked="False"/>
-                <TextBox x:Name="Value" Grid.Row="10" Grid.Column="1" Text="0" Margin="{Binding Source={StaticResource MarginBase}}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" d:LayoutOverrides="Height" />
+        <Grid Margin="3" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="Actionslabel" Content="Actions"/>
+            <Button x:Name="start" Content="Start" Margin="3" Click="action_Click" Grid.Row="1"/>
+            <Button x:Name="stop" Content="Stop" Margin="3" Click="action_Click" Grid.Column="1" Grid.Row="1"/>
+            <Button x:Name="clearconsole" Content="Clear Console" Margin="3" Click="action_Click" Grid.Column="2" Grid.Row="1"/>
+            <Label x:Name="Marketlabel" Content="Market" Grid.Row="2"/>
+            <Button x:Name="buy" Content="Buy" Margin="3" Grid.Row="3" Click="order_Click"/>
+            <Button x:Name="sell" Content="Sell" Margin="3" Grid.Column="1" Grid.Row="3" Click="order_Click"/>
+            <Button x:Name="close" Content="Close" Margin="2" Grid.Column="2" Grid.Row="3" Click="order_Click"/>
+            <RadioButton x:Name="bid" Content="Bid" Margin="3" Grid.Row="4" Checked="radioButton_Checked"/>
+            <RadioButton x:Name="ask" Content="Ask" Margin="3" Grid.Row="4" Grid.Column="1" Checked="radioButton_Checked"/>
+            <RadioButton x:Name="mkt" Content="Market" Margin="3" Grid.Row="4"  Grid.Column="2" Checked="radioButton_Checked" IsChecked="True"/>
+            <Label x:Name="Accountlabel" Content="Account"  Grid.Row="5"/>
+            <t:AccountSelector x:Name="accountSelector" Margin="3" Grid.Row="6"/>
+            <Label x:Name="Instrumentlabel" Content="Instrument"  Grid.Row="5" Grid.Column="1"/>
+            <t:InstrumentSelector x:Name="instrumentSelector" LastUsedGroup="AddOnFramework" Margin="3" Grid.Row="6" Grid.Column="1" MaxHeight="23"/>
+            <t:QuantityUpDown x:Name="qudSelector" Value="1" Margin="3" Grid.Row="6" Grid.Column="2" MaxHeight="23"/>
+        </Grid>
 
-
-                <CheckBox x:Name="ExampleCheckBox" Grid.Column="0" Grid.Row="12" Content="Close order"  d:LayoutOverrides="Height, LeftMargin, RightMargin, TopMargin, BottomMargin" HorizontalAlignment="Right" Width="81"/>
-
-            </Grid>
-        </ScrollViewer>
-        <TextBox x:Name="outputBox" Margin="{Binding Source={StaticResource MarginBase}}" Grid.Column="1" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+        <TextBox x:Name="output" Margin="6,6,10,6" Grid.Column="1" BorderBrush="#FF7E7E7E" Padding="3" Background="Black" Foreground="White" HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Visible" />
     </Grid>
 </t:NTTabPage>

@@ -7,7 +7,7 @@
     <ProjectGuid>{85E715A7-388F-4D1C-81D1-7E0EB48B8B75}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AddonShellProject</RootNamespace>
+    <RootNamespace>NinjaTrader.NinjaScript.AddOns</RootNamespace>
     <AssemblyName>AddonShellProject</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -79,6 +79,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="TextBoxWriter.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -100,12 +101,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\NinjaEnviremomentProject\NinjaEnviremomentProject\NinjaEnviremomentProject.csproj">
-      <Project>{770c8821-e908-4cc6-8c0c-b63d2246ccb5}</Project>
-      <Name>NinjaEnviremomentProject</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

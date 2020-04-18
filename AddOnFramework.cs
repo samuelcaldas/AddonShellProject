@@ -145,16 +145,16 @@ namespace NinjaTrader.Gui.NinjaScript
 			Caption = "Addon Shell Window";
 
 			// Set the default dimensions of the window
-			Width = 800;
-			Height = 600;
+			//Width = 800;
+			//Height = 600;
 
 			// TabControl should be created for window content if tab features are wanted
 			TabControl tabControl = new TabControl();
 
 			// Attached properties defined in TabControlManager class should be set to achieve tab moving, adding/removing tabs
-			TabControlManager.SetIsMovable(tabControl, true);
-			TabControlManager.SetCanAddTabs(tabControl, true);
-			TabControlManager.SetCanRemoveTabs(tabControl, true);
+			TabControlManager.SetIsMovable(tabControl, false);
+			TabControlManager.SetCanAddTabs(tabControl, false);
+			TabControlManager.SetCanRemoveTabs(tabControl, false);
 
 			// if ability to add new tabs is desired, TabControl has to have attached property "Factory" set.
 			TabControlManager.SetFactory(tabControl, new AddonShellWindowFactory());

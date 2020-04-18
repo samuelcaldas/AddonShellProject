@@ -39,6 +39,8 @@ namespace NinjaTrader.NinjaScript.AddOns
         #region Variables
         TextBoxWriter writer;
         private string orderType;
+        private NinjaTrader.Cbi.Instrument instrument = Instrument.GetInstrument("ES 03-20");
+        private MarketData marketData;
         #endregion
         public AddonShellWindow()
         {
@@ -49,6 +51,9 @@ namespace NinjaTrader.NinjaScript.AddOns
             writer = new TextBoxWriter(this.output);
             Console.SetOut(writer);
             Console.SetError(writer);
+            // Initialize market data
+            marketData = new MarketData(instrument);
+            marketData.Update += OnMarketData;
         }
 
         // Cleanup() is called when the script is ending, this is to remove used resources or event handlers. 
@@ -87,6 +92,13 @@ namespace NinjaTrader.NinjaScript.AddOns
             orderType = (sender as RadioButton).Name;
         }
 
+        // This method is fired on market data events
+
+        private void OnMarketData(object sender, MarketDataEventArgs e)
+        {
+            // Do something with market data events
+        }
+
         private void order_Click(object sender, RoutedEventArgs e)
         {
             if (instrumentSelector.Instrument == null)
@@ -95,7 +107,7 @@ namespace NinjaTrader.NinjaScript.AddOns
                 return;
             }
             string Btn = (sender as Button).Name;
-            MarketData marketData = new MarketData(instrumentSelector.Instrument);
+            
             Order entryOrder;
             OrderAction orderAction = OrderAction.Buy;
             OrderType type = OrderType.Market;
@@ -120,11 +132,13 @@ namespace NinjaTrader.NinjaScript.AddOns
 
             if (orderType == "bid")
             {
+                marketData = new MarketData(instrumentSelector.Instrument);
                 type = OrderType.Limit;
                 price = marketData.Bid.Price;
             }
             else if (orderType == "ask")
             {
+                marketData = new MarketData(instrumentSelector.Instrument);
                 type = OrderType.Limit;
                 price = marketData.Ask.Price;
             }

@@ -25,7 +25,7 @@ To install this AddOn, follow these steps:
 
 - Clone or download this repository to a local folder.
 - Open the file NinjaTraderAddOnProject.sln in Visual Studio.
-- Compile the project and copy the file NinjaTraderAddOnProject.dll generated to the folder Documents\NinjaTrader 8\bin\Custom\AddOns.
+- Compile the project and copy the file AddonShellProject.dll generated to the folder Documents\NinjaTrader 8\bin\Custom\AddOns.
 - Restart NinjaTrader 8 and check if the AddOn was loaded correctly.
 
 ## Usage

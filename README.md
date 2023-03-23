@@ -1,4 +1,4 @@
-# AddonShellProject
+# NinjaTrader AddonShell Project
 
 ![Screenshot of AddonShellProject](res/screen.png)
 
